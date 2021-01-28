@@ -38,7 +38,7 @@ router.post("/login", (req, res) => {
 
   if (isValid(req.body)) {
     helper
-      .findBy({ username: username }, "user")
+      .findBy({ username }, "user")
       .then(([user]) => {
         if (user && bcryptjs.compareSync(password, user.password)) {
           const token = makeJwt(user);

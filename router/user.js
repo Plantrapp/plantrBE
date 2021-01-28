@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const helper = require("./helper");
 const restricted = require("../auth/restricted-middleware");
+const bcrypt = require("bcryptjs");
 
 router.get("/", (req, res) => {
   helper
@@ -18,6 +19,14 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
+router.get("/info/:username", (req, res) => {
+  const username = req.params.username;
+  helper
+    .findBy({ username }, "user")
+    .then((rez) => res.status(200).json(rez))
+    .catch((err) => res.status(500).json({ status: 500, err }));
+});
+
 router.post("/", (req, res) => {
   helper
     .add(req.body, "user")
@@ -27,6 +36,14 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
+  if (req.body.password === "") {
+    req.body.password = req.body.oldPassword;
+  } else {
+    req.body.password = bcrypt.hashSync(req.body.password, 8); // Change number to an ENV variable 🔦
+  }
+  delete req.body.oldPassword;
+  console.log(req.body.password, req.body.oldPassword);
+
   helper
     .update(req.body, id, "user")
     .then((rez) => res.status(200).json(rez))

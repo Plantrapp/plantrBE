@@ -8,8 +8,9 @@ function findById(id, table) {
   return db(table).where({ id }).first();
 }
 
-function findBy(filter) {
-  return db("user").where(filter).orderBy("id");
+function findBy(filter, table) {
+  console.log(filter);
+  return db(table).where(filter).orderBy("id");
 }
 
 function add(addedObject, table) {
