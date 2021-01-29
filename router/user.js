@@ -42,7 +42,6 @@ router.put("/:id", (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, 8); // Change number to an ENV variable 🔦
   }
   delete req.body.oldPassword;
-  console.log(req.body.password, req.body.oldPassword);
 
   helper
     .update(req.body, id, "user")

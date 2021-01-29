@@ -9,7 +9,6 @@ function findById(id, table) {
 }
 
 function findBy(filter, table) {
-  console.log(filter);
   return db(table).where(filter).orderBy("id");
 }
 
