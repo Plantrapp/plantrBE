@@ -6,6 +6,7 @@ const app = express();
 const authRouter = require("./auth/auth-router");
 const client_growr_connectionRouter = require("./router/client_growr_connection");
 const userRouter = require("./router/user");
+const messageRouter = require("./router/message");
 const restricted = require("./auth/restricted-middleware");
 
 app.use(helmet());
@@ -20,6 +21,7 @@ app.use(
 app.use("/auth", authRouter);
 app.use("/client_growr_connection", client_growr_connectionRouter);
 app.use("/user", userRouter);
+app.use("/message", messageRouter);
 
 app.get("/", (req, res) => {
   res.sendFile("/Users/z/Documents/projects/Plantr Whole/plantrBE/index.html");

@@ -12,6 +12,13 @@ function findBy(filter, table) {
   return db(table).where(filter).orderBy("id");
 }
 
+function findByAnd(filter1, filter2, table) {
+  return db(table)
+    .where("sender", filter1)
+    .andWhere("recipient", filter2)
+    .orderBy("id");
+}
+
 function add(addedObject, table) {
   return db(table)
     .insert(addedObject)
@@ -42,8 +49,9 @@ function remove(id, table) {
 
 module.exports = {
   find,
-  findById,
   findBy,
+  findById,
+  findByAnd,
   add,
   update,
   remove,

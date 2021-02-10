@@ -39,10 +39,13 @@ router.post("/login", (req, res) => {
     helper
       .findBy({ username }, "user")
       .then(([user]) => {
+        console.log(user);
         if (user && bcryptjs.compareSync(password, user.password)) {
           const token = makeJwt(user);
 
-          res.status(200).json({ message: "login successful", token });
+          res
+            .status(200)
+            .json({ message: "login successful", token, role: user.role });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }

@@ -14,5 +14,14 @@ const io = socket(server, {
   },
 });
 io.on("connection", (socket) => {
-  console.log(socket.handshake.query);
+  console.log("user connected", socket.handshake.query.username);
+  socket.on("message", (message) => {
+    io.emit("message", {
+      sender: socket.handshake.query.username,
+      message: `${message}`,
+    });
+  });
+  socket.on("disconnect", () => {
+    console.log(`${socket.handshake.query.username} disconnected`);
+  });
 });

@@ -7,6 +7,15 @@ function foreignKey(tbl, refTable, name, refColumn) {
     .onDelete("RESTRICT")
     .onUpdate("CASCADE");
 }
+function foreignKeyUsername(tbl, refTable, name, refColumn) {
+  return tbl
+    .string(name)
+    .unsigned()
+    .references(refColumn || "id")
+    .inTable(refTable)
+    .onDelete("RESTRICT")
+    .onUpdate("CASCADE");
+}
 exports.up = function (knex) {
   return knex.schema
     .createTable("user", (tbl) => {
@@ -33,10 +42,17 @@ exports.up = function (knex) {
       tbl.increments();
       foreignKey(tbl, "user", "client_id");
       foreignKey(tbl, "user", "growr_id");
+    })
+    .createTable("message", (tbl) => {
+      tbl.increments();
+      foreignKeyUsername(tbl, "user", "sender", "username");
+      foreignKeyUsername(tbl, "user", "recipient", "username");
+      tbl.string("message");
     });
 };
 exports.down = function (knex) {
   return knex.schema
-    .dropTableIfExists("user")
-    .dropTableIfExists("growr_client_connection");
+    .dropTableIfExists("message")
+    .dropTableIfExists("growr_client_connection")
+    .dropTableIfExists("user");
 };
