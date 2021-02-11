@@ -36,7 +36,7 @@ exports.up = function (knex) {
       tbl.integer("star_rating").defaultTo(0);
       tbl.string("description");
       tbl.integer("follower_count").defaultTo(0);
-      tbl.integer("max_mile_range");
+      tbl.integer("max_mile_range").defaultTo(25);
     })
     .createTable("growr_client_connection", (tbl) => {
       tbl.increments();

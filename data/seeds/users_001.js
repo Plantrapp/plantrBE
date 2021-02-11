@@ -10,7 +10,7 @@ exports.seed = function (knex) {
         {
           username: "clone1",
           email: "clone1@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "clan",
           last_name: "dan",
           role: "Growr",
@@ -27,7 +27,7 @@ exports.seed = function (knex) {
         {
           username: "clone2",
           email: "clone2@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "shawn",
           last_name: "pawn",
           role: "Growr",
@@ -44,7 +44,7 @@ exports.seed = function (knex) {
         {
           username: "clone3",
           email: "clone3@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "kale",
           last_name: "doo",
           role: "Plantr",
@@ -58,7 +58,7 @@ exports.seed = function (knex) {
         {
           username: "clone4",
           email: "clone4@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "mop",
           last_name: "shop",
           role: "Plantr",
@@ -72,7 +72,7 @@ exports.seed = function (knex) {
         {
           username: "clone5",
           email: "clone5@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "mat",
           last_name: "cat",
           role: "Growr",
@@ -83,11 +83,12 @@ exports.seed = function (knex) {
           zipcode: 123456,
           isGrowr: true,
           max_mile_range: 15,
+          star_rating: 3,
         },
         {
           username: "clone6",
           email: "clone6@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "plan",
           last_name: "dan",
           role: "Growr",
@@ -104,7 +105,7 @@ exports.seed = function (knex) {
         {
           username: "clone7",
           email: "clone7@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "bun",
           last_name: "rum",
           role: "Growr",
@@ -121,7 +122,7 @@ exports.seed = function (knex) {
         {
           username: "clone8",
           email: "clone8@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "sun",
           last_name: "done",
           role: "Plantr",
@@ -135,7 +136,7 @@ exports.seed = function (knex) {
         {
           username: "clone9",
           email: "clone9@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "boo",
           last_name: "too",
           role: "Plantr",
@@ -149,7 +150,7 @@ exports.seed = function (knex) {
         {
           username: "clone10",
           email: "clone10@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "aol",
           last_name: "sol",
           role: "Plantr",
@@ -163,7 +164,7 @@ exports.seed = function (knex) {
         {
           username: "clone11",
           email: "clone11@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "debbrataca",
           last_name: "debbratacadebbrataca",
           role: "Plantr",
@@ -177,7 +178,7 @@ exports.seed = function (knex) {
         {
           username: "clone12",
           email: "clone12@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "yoshi",
           last_name: "mushi",
           role: "Growr",
@@ -194,7 +195,7 @@ exports.seed = function (knex) {
         {
           username: "clone13",
           email: "clone13@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "epco",
           last_name: "deco",
           role: "Growr",
@@ -211,7 +212,7 @@ exports.seed = function (knex) {
         {
           username: "clone14",
           email: "clone14@gmail.com",
-          password: bcryptjs.hashSync("pass", 8),
+          password: bcryptjs.hashSync("pass123", 8),
           first_name: "leggo",
           last_name: "eggo",
           role: "Plantr",
