@@ -31,6 +31,8 @@ exports.up = function (knex) {
       tbl.string("city").notNullable();
       tbl.string("state").notNullable();
       tbl.integer("zipcode").notNullable();
+      tbl.integer("lat").notNullable();
+      tbl.integer("lng").notNullable();
       tbl.string("role");
       tbl.integer("hourly_rate").defaultTo(0);
       tbl.integer("star_rating").defaultTo(0);

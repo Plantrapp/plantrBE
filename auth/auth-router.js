@@ -6,6 +6,7 @@ const router = require("express").Router();
 const helper = require("../router/helper");
 
 router.post("/register", (req, res) => {
+  console.log(req.body);
   const credentials = req.body;
 
   if (isValid(credentials)) {
@@ -43,9 +44,12 @@ router.post("/login", (req, res) => {
         if (user && bcryptjs.compareSync(password, user.password)) {
           const token = makeJwt(user);
 
-          res
-            .status(200)
-            .json({ message: "login successful", token, role: user.role });
+          res.status(200).json({
+            message: "login successful",
+            token,
+            role: user.role,
+            user,
+          });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }
