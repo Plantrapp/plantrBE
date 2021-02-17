@@ -23,6 +23,7 @@ exports.seed = function (knex) {
           lng: -77.005766,
           isGrowr: true,
           max_mile_range: 25,
+          star_rating: 4,
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
@@ -87,13 +88,15 @@ exports.seed = function (knex) {
           hourly_rate: 16.0,
           street_address: "123 street",
           state: "FL",
-          city: "orland",
+          city: "Orlando",
           zipcode: 123456,
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: true,
           max_mile_range: 15,
           star_rating: 3,
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
           username: "clone6",
