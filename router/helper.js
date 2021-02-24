@@ -8,22 +8,24 @@ function findById(id, table) {
   return db(table).where({ id }).first();
 }
 
+//findBy requires that you pass an object {name: value} as the filter or it won't work.
+//Alternatively if the valiable and the name being passed are the same, the object can be passed like so:
+//  const id = value
+//  findBy({id}, table)
 function findBy(filter, table) {
   return db(table).where(filter).orderBy("id");
 }
 
 function findByAnd(filter1, filter2, table) {
-  return db(table)
-    .where("sender", filter1)
-    .andWhere("recipient", filter2)
-    .orderBy("id");
+  return db(table).where(filter1).andWhere(filter2).orderBy("id");
 }
 
 function add(addedObject, table) {
   return db(table)
     .insert(addedObject)
     .then((id) => {
-      return findById(id[0], table);
+      console.log(id);
+      return findById(addedObject.id, table);
     });
 }
 

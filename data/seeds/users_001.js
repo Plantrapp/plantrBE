@@ -1,13 +1,15 @@
 const bcryptjs = require("bcryptjs");
+const uuid = require("uuid").v4;
+
 exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex("user")
     .truncate()
     .then(function () {
       // Inserts seed entries
-
       return knex("user").insert([
         {
+          id: uuid(),
           username: "clone1",
           email: "clone1@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -28,6 +30,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone2",
           email: "clone2@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -47,6 +50,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone3",
           email: "clone3@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -63,6 +67,7 @@ exports.seed = function (knex) {
           isGrowr: false,
         },
         {
+          id: uuid(),
           username: "clone4",
           email: "clone4@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -79,6 +84,7 @@ exports.seed = function (knex) {
           isGrowr: false,
         },
         {
+          id: uuid(),
           username: "clone5",
           email: "clone5@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -99,6 +105,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone6",
           email: "clone6@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -118,6 +125,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone7",
           email: "clone7@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -137,6 +145,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone8",
           email: "clone8@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -153,6 +162,7 @@ exports.seed = function (knex) {
           isGrowr: false,
         },
         {
+          id: uuid(),
           username: "clone9",
           email: "clone9@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -169,6 +179,7 @@ exports.seed = function (knex) {
           isGrowr: false,
         },
         {
+          id: uuid(),
           username: "clone10",
           email: "clone10@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -185,6 +196,7 @@ exports.seed = function (knex) {
           isGrowr: false,
         },
         {
+          id: uuid(),
           username: "clone11",
           email: "clone11@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -201,6 +213,7 @@ exports.seed = function (knex) {
           isGrowr: false,
         },
         {
+          id: uuid(),
           username: "clone12",
           email: "clone12@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -220,6 +233,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone13",
           email: "clone13@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),
@@ -239,6 +253,7 @@ exports.seed = function (knex) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
+          id: uuid(),
           username: "clone14",
           email: "clone14@gmail.com",
           password: bcryptjs.hashSync("pass123", 8),

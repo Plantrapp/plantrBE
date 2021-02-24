@@ -36,17 +36,23 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
-  if (req.body.password === "") {
-    req.body.password = req.body.oldPassword;
-  } else {
+  console.log(req.body);
+  console.log(
+    bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)
+  );
+  if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
+    console.log("TRUE ROUTE");
+    delete req.body.oldPassword;
+    delete req.body.previous_password;
     req.body.password = bcrypt.hashSync(req.body.password, 8); // Change number to an ENV variable 🔦
+    helper
+      .update(req.body, id, "user")
+      .then((rez) => res.status(200).json(rez))
+      .catch((err) => res.status(500).json({ status: 500, err }));
+  } else {
+    console.log("FALSE ROUTE");
+    res.status(401).json({ status: 401, msg: "not old password" });
   }
-  delete req.body.oldPassword;
-
-  helper
-    .update(req.body, id, "user")
-    .then((rez) => res.status(200).json(rez))
-    .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
 router.delete("/:id", (req, res) => {

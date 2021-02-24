@@ -19,7 +19,7 @@ function foreignKeyUsername(tbl, refTable, name, refColumn) {
 exports.up = function (knex) {
   return knex.schema
     .createTable("user", (tbl) => {
-      tbl.increments();
+      tbl.string("id");
       tbl.string("username").notNullable().unique().index();
       tbl.string("profile_picture");
       tbl.string("password").notNullable();
@@ -39,6 +39,7 @@ exports.up = function (knex) {
       tbl.string("description");
       tbl.integer("follower_count").defaultTo(0);
       tbl.integer("max_mile_range").defaultTo(25);
+      tbl.string("created_at");
     })
     .createTable("growr_client_connection", (tbl) => {
       tbl.increments();
@@ -47,13 +48,27 @@ exports.up = function (knex) {
     })
     .createTable("message", (tbl) => {
       tbl.increments();
-      foreignKeyUsername(tbl, "user", "sender", "username");
-      foreignKeyUsername(tbl, "user", "recipient", "username");
+      foreignKey(tbl, "user", "sender_id");
+      foreignKey(tbl, "user", "recipient_id");
+      tbl.string("sender");
+      tbl.string("recipient");
       tbl.string("message");
+      tbl.string("created_at");
+    })
+    .createTable("blogs", (tbl) => {
+      tbl.increments();
+      foreignKey(tbl, "user", "author_id").notNullable();
+      tbl.string("author").notNullable();
+      tbl.string("title").notNullable();
+      tbl.string("description");
+      tbl.string("category").notNullable();
+      tbl.string("message").notNullable();
+      tbl.string("created_at");
     });
 };
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("blogs")
     .dropTableIfExists("message")
     .dropTableIfExists("growr_client_connection")
     .dropTableIfExists("user");

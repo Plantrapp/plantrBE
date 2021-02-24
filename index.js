@@ -9,19 +9,19 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3000", //change Me pre deployment 🔦
     methods: ["GET", "POST"],
   },
 });
+const connectedUsers = {};
 io.on("connection", (socket) => {
-  console.log("user connected", socket.handshake.query.username);
-  socket.on("message", (message) => {
-    io.emit("message", {
-      sender: socket.handshake.query.username,
-      message: `${message}`,
-    });
+  socket.on("loggedIn", ({ username, room_id }) => {
+    connectedUsers[room_id] = username;
+    socket.join(room_id);
   });
-  socket.on("disconnect", () => {
-    console.log(`${socket.handshake.query.username} disconnected`);
+
+  socket.on("send-message", ({ recipient, message, sender }) => {
+    console.log("sender", sender);
+    socket.broadcast.to(recipient).emit("receive-message", { sender, message });
   });
 });

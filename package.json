@@ -22,7 +22,8 @@
     "mailslurp-client": "^11.3.0",
     "sendmail": "^1.6.1",
     "socket.io": "^3.1.0",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
