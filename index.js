@@ -13,15 +13,14 @@ const io = socket(server, {
     methods: ["GET", "POST"],
   },
 });
-const connectedUsers = {};
+
 io.on("connection", (socket) => {
   socket.on("loggedIn", ({ username, room_id }) => {
-    connectedUsers[room_id] = username;
+    console.log(`${username} logged into ${room_id}`);
     socket.join(room_id);
   });
 
   socket.on("send-message", ({ recipient, message, sender }) => {
-    console.log("sender", sender);
     socket.broadcast.to(recipient).emit("receive-message", { sender, message });
   });
 });
