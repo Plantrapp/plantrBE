@@ -19,7 +19,7 @@ function foreignKeyUsername(tbl, refTable, name, refColumn) {
 exports.up = function (knex) {
   return knex.schema
     .createTable("user", (tbl) => {
-      tbl.string("id");
+      tbl.string("id").unique().index().primary();
       tbl.string("username").notNullable().unique().index();
       tbl.string("profile_picture");
       tbl.string("password").notNullable();
@@ -43,8 +43,8 @@ exports.up = function (knex) {
     })
     .createTable("growr_client_connection", (tbl) => {
       tbl.increments();
-      foreignKey(tbl, "user", "client_id");
-      foreignKey(tbl, "user", "growr_id");
+      foreignKeyUsername(tbl, "user", "dwellr_id");
+      foreignKeyUsername(tbl, "user", "growr_id");
     })
     .createTable("message", (tbl) => {
       tbl.increments();
