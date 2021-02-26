@@ -25,7 +25,7 @@ function add(addedObject, table) {
     .insert(addedObject)
     .then((id) => {
       console.log(id);
-      return findById(addedObject.id, table);
+      return findById(addedObject.id || id, table);
     });
 }
 
@@ -48,6 +48,13 @@ function remove(id, table) {
       return removed;
     });
 }
+
+/*-------------------- 
+    HYPER SPECIFIC         
+ --------------------*/
+// function findConnectedUsersJoin() {
+
+// }
 
 module.exports = {
   find,

@@ -41,7 +41,7 @@ exports.up = function (knex) {
       tbl.integer("max_mile_range").defaultTo(25);
       tbl.string("created_at");
     })
-    .createTable("growr_client_connection", (tbl) => {
+    .createTable("client_growr_connection", (tbl) => {
       tbl.increments();
       foreignKeyUsername(tbl, "user", "dwellr_id");
       foreignKeyUsername(tbl, "user", "growr_id");
