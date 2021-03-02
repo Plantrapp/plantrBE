@@ -58,7 +58,6 @@ router.get("/growr/:id", async (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
   helper
     .add(req.body, "client_growr_connection")
     .then((rez) => res.status(200).json(rez))

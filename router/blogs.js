@@ -18,8 +18,8 @@ router.get("/:id", (req, res) => {
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
-router.get("/user/:id", (req, res) => {
-  const author_id = Number(req.params.id);
+router.get("/user/:author_id", (req, res) => {
+  const author_id = req.params.author_id;
   helper
     .findBy({ author_id }, "blogs")
     .then((rez) => res.status(200).json(rez))

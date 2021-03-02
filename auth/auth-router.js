@@ -7,7 +7,6 @@ const router = require("express").Router();
 const helper = require("../router/helper");
 
 router.post("/register", (req, res) => {
-  console.log(req.body);
   const credentials = req.body;
   credentials.id = uuid();
   if (isValid(credentials)) {

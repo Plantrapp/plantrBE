@@ -7,7 +7,7 @@ function foreignKey(tbl, refTable, name, refColumn) {
     .onDelete("RESTRICT")
     .onUpdate("CASCADE");
 }
-function foreignKeyUsername(tbl, refTable, name, refColumn) {
+function foreignKeyString(tbl, refTable, name, refColumn) {
   return tbl
     .string(name)
     .unsigned()
@@ -43,13 +43,13 @@ exports.up = function (knex) {
     })
     .createTable("client_growr_connection", (tbl) => {
       tbl.increments();
-      foreignKeyUsername(tbl, "user", "dwellr_id");
-      foreignKeyUsername(tbl, "user", "growr_id");
+      foreignKeyString(tbl, "user", "dwellr_id");
+      foreignKeyString(tbl, "user", "growr_id");
     })
     .createTable("message", (tbl) => {
       tbl.increments();
-      foreignKey(tbl, "user", "sender_id");
-      foreignKey(tbl, "user", "recipient_id");
+      foreignKeyString(tbl, "user", "sender_id");
+      foreignKeyString(tbl, "user", "recipient_id");
       tbl.string("sender");
       tbl.string("recipient");
       tbl.string("message");
@@ -57,7 +57,7 @@ exports.up = function (knex) {
     })
     .createTable("blogs", (tbl) => {
       tbl.increments();
-      foreignKey(tbl, "user", "author_id").notNullable();
+      foreignKeyString(tbl, "user", "author_id").notNullable();
       tbl.string("author").notNullable();
       tbl.string("title").notNullable();
       tbl.string("description");
@@ -70,6 +70,6 @@ exports.down = function (knex) {
   return knex.schema
     .dropTableIfExists("blogs")
     .dropTableIfExists("message")
-    .dropTableIfExists("growr_client_connection")
+    .dropTableIfExists("client_growr_connection")
     .dropTableIfExists("user");
 };
