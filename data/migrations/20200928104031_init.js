@@ -64,6 +64,13 @@ exports.up = function (knex) {
       tbl.string("category").notNullable();
       tbl.string("message").notNullable();
       tbl.string("created_at");
+    })
+    .createTable("portfolio_posts", (tbl) => {
+      tbl.increments();
+      foreignKeyString(tbl, "user", "user_id");
+      tbl.string("url").notNullable();
+      tbl.string("description");
+      tbl.string("created_at");
     });
 };
 exports.down = function (knex) {

@@ -37,17 +37,20 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   const id = req.params.id;
 
-  if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
-    delete req.body.oldPassword;
-    delete req.body.previous_password;
-    req.body.password = bcrypt.hashSync(req.body.password, 8); // Change number to an ENV variable 🔦
-    helper
-      .update(req.body, id, "user")
-      .then((rez) => res.status(200).json(rez))
-      .catch((err) => res.status(500).json({ status: 500, err }));
-  } else {
-    res.status(401).json({ status: 401, msg: "not old password" });
+  if (req.body.previous_password) {
+    if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
+      delete req.body.oldPassword;
+      delete req.body.previous_password;
+      req.body.password = bcrypt.hashSync(req.body.password, 8); // Change number to an ENV variable 🔦
+    } else {
+      res.status(401).json({ status: 401, msg: "not old password" });
+    }
   }
+
+  helper
+    .update(req.body, id, "user")
+    .then((rez) => res.status(200).json(rez))
+    .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
 router.delete("/:id", (req, res) => {
