@@ -8,6 +8,7 @@ const client_growr_connectionRouter = require("./router/client_growr_connection"
 const userRouter = require("./router/user");
 const messageRouter = require("./router/message");
 const blogsRouter = require("./router/blogs");
+const reviewsRouter = require("./router/reviews");
 const restricted = require("./auth/restricted-middleware");
 
 app.use(helmet());
@@ -24,6 +25,7 @@ app.use("/client-growr-connection", client_growr_connectionRouter);
 app.use("/user", userRouter);
 app.use("/message", messageRouter);
 app.use("/blog-posts", blogsRouter);
+app.use("/reviews", reviewsRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({ Victor_Frankenstein: "Its ALIVE" });

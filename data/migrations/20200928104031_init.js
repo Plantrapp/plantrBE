@@ -71,10 +71,20 @@ exports.up = function (knex) {
       tbl.string("url").notNullable();
       tbl.string("description");
       tbl.string("created_at");
+    })
+    .createTable("reviews", (tbl) => {
+      tbl.increments();
+      foreignKeyString(tbl, "user", "reviewee_id").notNullable();
+      foreignKeyString(tbl, "user", "reviewer_id").notNullable();
+      tbl.integer("star_rating").notNullable();
+      tbl.string("message").notNullable();
+      tbl.string("created_at").notNullable();
     });
 };
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("reviews")
+    .dropTableIfExists("portfolio_posts")
     .dropTableIfExists("blogs")
     .dropTableIfExists("message")
     .dropTableIfExists("client_growr_connection")
