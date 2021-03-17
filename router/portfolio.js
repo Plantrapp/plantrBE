@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
     },
     (err, rez) => {
       if (err) {
-        console.log(err);
+        alert("There was an error while uploading your picture.");
       } else {
         console.log(rez);
         const newPost = {
