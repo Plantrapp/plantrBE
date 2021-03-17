@@ -67,7 +67,7 @@ exports.up = function (knex) {
     })
     .createTable("portfolio_posts", (tbl) => {
       tbl.increments();
-      foreignKeyString(tbl, "user", "user_id");
+      foreignKeyString(tbl, "user", "user_id").notNullable();
       tbl.string("url").notNullable();
       tbl.string("description");
       tbl.string("created_at");
