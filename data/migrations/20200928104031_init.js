@@ -40,6 +40,7 @@ exports.up = function (knex) {
       tbl.integer("follower_count").defaultTo(0);
       tbl.integer("max_mile_range").defaultTo(25);
       tbl.string("created_at");
+      tbl.boolean("isSubscribed");
     })
     .createTable("client_growr_connection", (tbl) => {
       tbl.increments();
