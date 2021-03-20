@@ -71,6 +71,7 @@ exports.up = function (knex) {
       tbl.string("url").notNullable();
       tbl.string("description");
       tbl.string("created_at");
+      tbl.string("public_id").notNullable();
     })
     .createTable("reviews", (tbl) => {
       tbl.increments();

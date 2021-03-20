@@ -7,6 +7,12 @@ const formData = require("express-form-data");
 const restricted = require("../auth/restricted-middleware");
 const bcrypt = require("bcryptjs");
 
+cloudinary.config({
+  cloud_name: "samuel-brown",
+  api_key: "679133214658966",
+  api_secret: "ZwOhfkMlf6bzL8GnA2iSrRYlI_U",
+});
+
 router.get("/", (req, res) => {
   helper
     .find("portfolio_posts")
@@ -30,9 +36,11 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.files, req.body);
   let originalName = req.files.file.originalFilename.slice(0, -4);
   let image = req.files.file.path;
+  let public_id = `${
+    req.body.user_id
+  }/${new Date().toDateString()}/${originalName}`;
 
   cloudinary.uploader.upload(
     image,
@@ -52,6 +60,7 @@ router.post("/", (req, res) => {
           user_id: req.body.user_id,
           description: req.body.description,
           created_at: new Date().toString(),
+          public_id: rez.public_id,
         };
         helper
           .add(newPost, "portfolio_posts")
@@ -64,9 +73,13 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
+
   helper
     .update(req.body, id, "portfolio_posts")
-    .then((rez) => res.status(200).json(rez))
+    .then((rez) => {
+      console.log(rez);
+      res.status(200).json(rez);
+    })
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
@@ -74,7 +87,22 @@ router.delete("/:id", (req, res) => {
   const id = req.params.id;
   helper
     .remove(id, "portfolio_posts")
-    .then((rez) => res.status(200).json(rez))
+    .then((rez) => {
+      console.log(rez);
+      // const trim_start = rez.url.search("/portfolio_pics");
+      // console.log(trim_start);
+      // let public_id = rez.url.slice(trim_start, -4);
+      // public_id = public_id.replace(/%/g, " ");
+      // console.log(public_id);
+      cloudinary.uploader.destroy(rez.public_id, (err, result) => {
+        if (err) {
+          console.log("error", err);
+        } else {
+          console.log(result);
+        }
+      });
+      res.status(200).json(rez);
+    })
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
