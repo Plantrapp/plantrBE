@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   const id = req.params.id;
+
   helper
     .findById(id, "user")
     .then((rez) => res.status(200).json(rez))
@@ -21,6 +22,7 @@ router.get("/:id", (req, res) => {
 
 router.get("/info/:username", (req, res) => {
   const username = req.params.username;
+
   helper
     .findBy({ username }, "user")
     .then((rez) => res.status(200).json(rez))
@@ -36,10 +38,6 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
-  console.log(req.body);
-  if (req.body.subscribe) {
-    console.log(true);
-  }
 
   if (req.body.previous_password) {
     if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {

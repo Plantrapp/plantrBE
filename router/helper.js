@@ -24,7 +24,6 @@ function add(addedObject, table) {
   return db(table)
     .insert(addedObject)
     .then((id) => {
-      console.log(id);
       return findById(addedObject.id || id, table);
     });
 }

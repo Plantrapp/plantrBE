@@ -16,7 +16,6 @@ const io = socket(server, {
 
 io.on("connection", (socket) => {
   socket.on("loggedIn", ({ username, room_id }) => {
-    console.log(`${username} logged into ${room_id}`);
     socket.join(room_id);
   });
 

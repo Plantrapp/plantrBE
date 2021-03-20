@@ -54,7 +54,6 @@ router.post("/", (req, res) => {
       if (err) {
         alert("There was an error while uploading your picture.");
       } else {
-        console.log(rez);
         const newPost = {
           url: rez.secure_url,
           user_id: req.body.user_id,
@@ -77,7 +76,6 @@ router.put("/:id", (req, res) => {
   helper
     .update(req.body, id, "portfolio_posts")
     .then((rez) => {
-      console.log(rez);
       res.status(200).json(rez);
     })
     .catch((err) => res.status(500).json({ status: 500, err }));
@@ -88,7 +86,6 @@ router.delete("/:id", (req, res) => {
   helper
     .remove(id, "portfolio_posts")
     .then((rez) => {
-      console.log(rez);
       // const trim_start = rez.url.search("/portfolio_pics");
       // console.log(trim_start);
       // let public_id = rez.url.slice(trim_start, -4);
