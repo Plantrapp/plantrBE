@@ -36,6 +36,10 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
+  console.log(req.body);
+  if (req.body.subscribe) {
+    console.log(true);
+  }
 
   if (req.body.previous_password) {
     if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
