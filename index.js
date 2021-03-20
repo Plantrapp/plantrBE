@@ -9,7 +9,7 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000", //change Me pre deployment 🔦
+    origin: "deployed-plantr-fe-sambrown0322.vercel.app", //change Me pre deployment 🔦
     methods: ["GET", "POST"],
   },
 });
