@@ -15,7 +15,7 @@ const io = socket(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("loggedIn", ({ username, room_id }) => {
+  socket.on("loggedIn", ({  room_id }) => {
     socket.join(room_id);
   });
 

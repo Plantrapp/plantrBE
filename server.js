@@ -22,8 +22,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
-    credentials: true,
+    origin: "deployed-plantr-fe-sambrown0322.vercel.app",
   })
 );
 
