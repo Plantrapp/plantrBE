@@ -9,13 +9,13 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "deployed-plantr-fe-sambrown0322.vercel.app", //change Me pre deployment 🔦
+    origin: "deployed-plantr-fe-sambrown0322.vercel.app",
     methods: ["GET", "POST"],
   },
 });
 
 io.on("connection", (socket) => {
-  socket.on("loggedIn", ({  room_id }) => {
+  socket.on("loggedIn", ({ room_id }) => {
     socket.join(room_id);
   });
 
