@@ -9,7 +9,7 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "deployed-plantr-fe-sambrown0322.vercel.app",
+    origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
     methods: ["GET", "POST"],
   },
 });
