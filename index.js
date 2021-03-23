@@ -2,6 +2,8 @@ const app = require("./server");
 const socket = require("socket.io");
 const chalk = require("chalk");
 const PORT = process.env.PORT || 5000;
+// const URL = `https://deployed-plantr-fe-sambrown0322.vercel.app`;
+const URL = `*`;
 
 const server = app.listen(PORT, () =>
   console.log(chalk.blue(`>> [Port ${PORT}] I'm listening...`))
@@ -9,7 +11,7 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
+    origin: URL,
     methods: ["GET", "POST"],
   },
 });

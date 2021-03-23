@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 
 router.get("/:reviewee_id", (req, res) => {
   const reviewee_id = req.params.reviewee_id;
+
   helper
     .findBy({ reviewee_id }, "reviews")
     .then((rez) => {

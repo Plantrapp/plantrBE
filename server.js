@@ -22,7 +22,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
+    origin: "http://localhost:3000",
   })
 );
 
@@ -33,7 +33,6 @@ app.use("/client-growr-connection", client_growr_connectionRouter);
 app.use("/user", userRouter);
 app.use("/message", messageRouter);
 app.use("/blog-posts", blogsRouter);
-
 app.use("/reviews", reviewsRouter);
 
 app.use("/portfolio-posts", portfolioRouter);

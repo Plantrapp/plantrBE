@@ -26,6 +26,7 @@ exports.seed = function (knex) {
           lat: 38.8716329,
           lng: -77.005766,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 25,
           star_rating: 4,
           description:
@@ -49,6 +50,7 @@ exports.seed = function (knex) {
           lat: 36.1435235,
           lng: -115.154733,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 20,
           star_rating: 1,
           description:
@@ -70,6 +72,7 @@ exports.seed = function (knex) {
           city: "Poway",
           zipcode: 92064,
           isGrowr: false,
+          isSubscribed: 1,
         },
         {
           id: uuid(),
@@ -87,6 +90,7 @@ exports.seed = function (knex) {
           lat: 33.011055,
           lng: -117.021978,
           isGrowr: false,
+          isSubscribed: 1,
         },
         {
           id: uuid(),
@@ -106,6 +110,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 15,
           star_rating: 3,
           description:
@@ -129,6 +134,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 30,
           star_rating: 5,
           description:
@@ -152,6 +158,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 25,
           star_rating: 2,
           description:
@@ -173,6 +180,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: false,
+          isSubscribed: 1,
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
@@ -192,6 +200,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: false,
+          isSubscribed: 1,
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
@@ -211,6 +220,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: false,
+          isSubscribed: 1,
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
@@ -230,6 +240,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: false,
+          isSubscribed: 1,
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
@@ -251,6 +262,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 25,
           star_rating: 5,
           description:
@@ -274,6 +286,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: true,
+          isSubscribed: 1,
           max_mile_range: 50,
           star_rating: 4,
           description:
@@ -295,6 +308,7 @@ exports.seed = function (knex) {
           lat: 28.4346704,
           lng: -81.3006235,
           isGrowr: false,
+          isSubscribed: 1,
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
