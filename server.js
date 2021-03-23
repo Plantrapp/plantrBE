@@ -22,7 +22,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
   })
 );
 
