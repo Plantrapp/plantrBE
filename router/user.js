@@ -38,8 +38,17 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
-
+  if (req.body.key) {
+    delete req.body.key;
+    req.body.password = bcrypt.hashSync(req.body.password, 8);
+    helper
+      .update(req.body, id, "user")
+      .then((rez) => res.status(200).json(rez))
+      .catch((err) => res.status(500).json({ status: 500, err }));
+    return;
+  }
   if (req.body.previous_password) {
+    console.log("here");
     if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
       delete req.body.oldPassword;
       delete req.body.previous_password;

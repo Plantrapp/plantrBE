@@ -81,10 +81,19 @@ exports.up = function (knex) {
       tbl.integer("star_rating").notNullable();
       tbl.string("message").notNullable();
       tbl.string("created_at").notNullable();
+    })
+    .createTable("hashes", (tbl) => {
+      tbl.increments();
+      foreignKeyString(tbl, "user", "user_id").notNullable();
+      tbl.string("email").notNullable();
+      tbl.string("hash").notNullable();
+      tbl.boolean("isHashUsed").defaultTo(false);
+      tbl.integer("expires").notNullable();
     });
 };
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("hashes")
     .dropTableIfExists("reviews")
     .dropTableIfExists("portfolio_posts")
     .dropTableIfExists("blogs")
