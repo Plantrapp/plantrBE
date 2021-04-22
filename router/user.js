@@ -1,8 +1,15 @@
 const router = require("express").Router();
+const cloudinary = require("cloudinary").v2;
 
 const helper = require("./helper");
 const restricted = require("../auth/restricted-middleware");
 const bcrypt = require("bcryptjs");
+
+cloudinary.config({
+  cloud_name: "samuel-brown",
+  api_key: "679133214658966",
+  api_secret: "ZwOhfkMlf6bzL8GnA2iSrRYlI_U",
+});
 
 router.get("/", (req, res) => {
   helper
@@ -38,6 +45,7 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
+  console.log(req.body, req.files);
 
   if (req.body.previous_password) {
     if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
@@ -49,10 +57,28 @@ router.put("/:id", (req, res) => {
     }
   }
 
-  helper
-    .update(req.body, id, "user")
-    .then((rez) => res.status(200).json(rez))
-    .catch((err) => res.status(500).json({ status: 500, err }));
+  const image = req.files.file.path;
+
+  cloudinary.uploader.upload(
+    image,
+    {
+      upload_preset: "prof_pic",
+      public_id: `${req.body.id}/profile_pic`,
+    },
+    (err, rez) => {
+      if (err) {
+        console.log(err);
+      } else {
+        const changes = { ...req.body };
+        changes.profile_picture = rez.secure_url;
+        console.log(req.body);
+        helper
+          .update(changes, id, "user")
+          .then((rez) => res.status(200).json(rez))
+          .catch((err) => res.status(500).json({ status: 500, err }));
+      }
+    }
+  );
 });
 
 router.delete("/:id", (req, res) => {

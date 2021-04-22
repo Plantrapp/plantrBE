@@ -38,9 +38,6 @@ router.get("/user/:user_id", (req, res) => {
 router.post("/", (req, res) => {
   let originalName = req.files.file.originalFilename.slice(0, -4);
   let image = req.files.file.path;
-  let public_id = `${
-    req.body.user_id
-  }/${new Date().toDateString()}/${originalName}`;
 
   cloudinary.uploader.upload(
     image,
