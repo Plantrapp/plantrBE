@@ -14,13 +14,13 @@ const reviewsRouter = require("./router/reviews");
 const portfolioRouter = require("./router/portfolio");
 const forgotRouter = require("./router/forgot");
 const restricted = require("./auth/restricted-middleware");
-
+const URL = "https://deployed-plantr-fe-sambrown0322.vercel.app";
+// const URL = "*"
 app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
-    // origin: "*",
+    origin: URL,
   })
 );
 app.use(formData.parse());
