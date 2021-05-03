@@ -19,8 +19,8 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    // origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
-    origin: "*",
+    origin: "https://deployed-plantr-fe-sambrown0322.vercel.app",
+    // origin: "*",
   })
 );
 app.use(formData.parse());
