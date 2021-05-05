@@ -45,6 +45,7 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
+
   if (req.body.key) {
     delete req.body.key;
     req.body.password = bcrypt.hashSync(req.body.password, 8);
@@ -55,7 +56,6 @@ router.put("/:id", (req, res) => {
     return;
   }
   if (req.body.previous_password) {
-    console.log("here");
     if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
       delete req.body.oldPassword;
       delete req.body.previous_password;
@@ -64,29 +64,34 @@ router.put("/:id", (req, res) => {
       res.status(401).json({ status: 401, msg: "not old password" });
     }
   }
+  if (req.files) {
+    const image = req.files.file.path;
 
-  const image = req.files.file.path;
-
-  cloudinary.uploader.upload(
-    image,
-    {
-      upload_preset: "prof_pic",
-      public_id: `${req.body.id}/profile_pic`,
-    },
-    (err, rez) => {
-      if (err) {
-        console.log(err);
-      } else {
-        const changes = { ...req.body };
-        changes.profile_picture = rez.secure_url;
-        console.log(req.body);
-        helper
-          .update(changes, id, "user")
-          .then((rez) => res.status(200).json(rez))
-          .catch((err) => res.status(500).json({ status: 500, err }));
+    cloudinary.uploader.upload(
+      image,
+      {
+        upload_preset: "prof_pic",
+        public_id: `${req.body.id}/profile_pic`,
+      },
+      (err, rez) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const changes = { ...req.body };
+          changes.profile_picture = rez.secure_url;
+          helper
+            .update(changes, id, "user")
+            .then((rez) => res.status(200).json(rez))
+            .catch((err) => res.status(500).json({ status: 500, err }));
+        }
       }
-    }
-  );
+    );
+  }
+
+  helper
+    .update(req.body, id, "user")
+    .then((rez) => res.status(200).json(rez))
+    .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
 router.delete("/:id", (req, res) => {
