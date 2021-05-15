@@ -11,14 +11,14 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   helper
     .find("user")
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", restricted, (req, res) => {
   const id = req.params.id;
 
   helper
@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.get("/info/:username", (req, res) => {
+router.get("/info/:username", restricted, (req, res) => {
   const username = req.params.username;
 
   helper
@@ -36,14 +36,14 @@ router.get("/info/:username", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   helper
     .add(req.body, "user")
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", restricted, (req, res) => {
   const id = req.params.id;
 
   if (req.body.key) {
@@ -94,7 +94,7 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   const id = req.params.id;
   helper
     .remove(id, "user")
