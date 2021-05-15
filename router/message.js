@@ -4,7 +4,7 @@ const helper = require("./helper");
 const restricted = require("../auth/restricted-middleware");
 const bcrypt = require("bcryptjs");
 
-router.get("/:sender/:recipient", async (req, res) => {
+router.get("/:sender/:recipient", restricted, async (req, res) => {
   const sender_id = req.params.sender;
   const recipient_id = req.params.recipient;
   let response;
@@ -28,14 +28,14 @@ router.get("/:sender/:recipient", async (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   helper
     .add(req.body, "message")
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", restricted, (req, res) => {
   const id = req.params.id;
   helper
     .update(req.body, id, "message")
@@ -43,7 +43,7 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   const id = req.params.id;
   helper
     .remove(id, "message")

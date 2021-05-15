@@ -6,9 +6,9 @@ const restricted = require("../auth/restricted-middleware");
 const bcrypt = require("bcryptjs");
 
 cloudinary.config({
-  cloud_name: "samuel-brown",
-  api_key: "679133214658966",
-  api_secret: "ZwOhfkMlf6bzL8GnA2iSrRYlI_U",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 router.get("/", (req, res) => {

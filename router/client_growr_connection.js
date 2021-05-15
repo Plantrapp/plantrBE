@@ -3,7 +3,7 @@ const router = require("express").Router();
 const helper = require("./helper");
 const restricted = require("../auth/restricted-middleware");
 
-router.get("/dwellr/:id", async (req, res) => {
+router.get("/dwellr/:id", restricted, async (req, res) => {
   const dwellr_id = req.params.id;
   let users;
   const sendBack = [];
@@ -30,7 +30,7 @@ router.get("/dwellr/:id", async (req, res) => {
   });
 });
 
-router.get("/growr/:id", async (req, res) => {
+router.get("/growr/:id", restricted, async (req, res) => {
   const growr_id = req.params.id;
   let users;
   const sendBack = [];
@@ -57,14 +57,14 @@ router.get("/growr/:id", async (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   helper
     .add(req.body, "client_growr_connection")
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/", restricted, async (req, res) => {
   const { dwellr_id, growr_id } = req.body;
   let id;
   await helper

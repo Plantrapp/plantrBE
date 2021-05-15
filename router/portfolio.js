@@ -13,21 +13,21 @@ cloudinary.config({
   api_secret: "ZwOhfkMlf6bzL8GnA2iSrRYlI_U",
 });
 
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   helper
     .find("portfolio_posts")
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", restricted, (req, res) => {
   const id = req.params.id;
   helper
     .findById(id, "portfolio_posts")
     .then((rez) => res.status(200).json(rez))
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
-router.get("/user/:user_id", (req, res) => {
+router.get("/user/:user_id", restricted, (req, res) => {
   const user_id = req.params.user_id;
   helper
     .findBy({ user_id }, "portfolio_posts")
@@ -35,7 +35,7 @@ router.get("/user/:user_id", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   let originalName = req.files.file.originalFilename.slice(0, -4);
   let image = req.files.file.path;
 
@@ -67,7 +67,7 @@ router.post("/", (req, res) => {
   );
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", restricted, (req, res) => {
   const id = req.params.id;
 
   helper
@@ -78,7 +78,7 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   const id = req.params.id;
   helper
     .remove(id, "portfolio_posts")
