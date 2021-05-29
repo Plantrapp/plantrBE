@@ -86,12 +86,12 @@ router.put("/:id", restricted, (req, res) => {
         }
       }
     );
+  } else {
+    helper
+      .update(req.body, id, "user")
+      .then((rez) => res.status(200).json(rez))
+      .catch((err) => res.status(500).json({ status: 500, err }));
   }
-
-  helper
-    .update(req.body, id, "user")
-    .then((rez) => res.status(200).json(rez))
-    .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
 router.delete("/:id", restricted, (req, res) => {
