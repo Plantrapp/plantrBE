@@ -3,10 +3,9 @@ const chalk = require("chalk");
 const helper = require("./helper");
 const restricted = require("../auth/restricted-middleware");
 
-router.get("/dwellr/:id", restricted, (req, res) => {
+router.get("/dwellr/:id", (req, res) => {
   const dwellr_id = req.params.id;
   const sendBack = [];
-
   helper
     .findBy({ dwellr_id }, "client_growr_connection")
     .then((rez) => {
@@ -27,7 +26,7 @@ router.get("/dwellr/:id", restricted, (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.get("/growr/:id", restricted, (req, res) => {
+router.get("/growr/:id", (req, res) => {
   const growr_id = req.params.id;
   const sendBack = [];
   helper
