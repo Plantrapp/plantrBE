@@ -1,80 +1,78 @@
 const router = require("express").Router();
-
+const chalk = require("chalk");
 const helper = require("./helper");
 const restricted = require("../auth/restricted-middleware");
 
-router.get("/dwellr/:id", restricted, async (req, res) => {
+router.get("/dwellr/:id", restricted, (req, res) => {
   const dwellr_id = req.params.id;
-  let users;
   const sendBack = [];
 
-  await helper
+  helper
     .findBy({ dwellr_id }, "client_growr_connection")
     .then((rez) => {
-      users = rez;
+      rez.forEach((user) => {
+        helper
+          .findById(user.growr_id, "user")
+          .then((response) => {
+            sendBack.push(response);
+            if (rez.length === sendBack.length) {
+              res.status(200).json(sendBack);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     })
     .catch((err) => res.status(500).json({ status: 500, err }));
-
-  users.forEach((user) => {
-    helper
-      .findById(user.growr_id, "user")
-      .then((response) => {
-        sendBack.push(response);
-        if (users.length === sendBack.length) {
-          res.status(200).json(sendBack);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
 });
 
-router.get("/growr/:id", restricted, async (req, res) => {
+router.get("/growr/:id", restricted, (req, res) => {
   const growr_id = req.params.id;
-  let users;
   const sendBack = [];
-
-  await helper
+  helper
     .findBy({ growr_id }, "client_growr_connection")
     .then((rez) => {
-      users = rez;
+      rez.forEach((user) => {
+        helper
+          .findById(user.dwellr_id, "user")
+          .then((response) => {
+            sendBack.push(response);
+            if (rez.length === sendBack.length) {
+              res.status(200).json(sendBack);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     })
     .catch((err) => res.status(500).json({ status: 500, err }));
-
-  users.forEach((user) => {
-    helper
-      .findById(user.dwellr_id, "user")
-      .then((response) => {
-        sendBack.push(response);
-        if (users.length === sendBack.length) {
-          res.status(200).json(sendBack);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
 });
 
 router.post("/", restricted, (req, res) => {
   helper
     .add(req.body, "client_growr_connection")
-    .then((rez) => res.status(200).json(rez))
+    .then((rez) => {
+      res.status(200).json(rez);
+    })
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.delete("/", restricted, async (req, res) => {
+router.delete("/", restricted, (req, res) => {
   const { dwellr_id, growr_id } = req.body;
-  let id;
-  await helper
+  helper
     .findByAnd({ dwellr_id }, { growr_id }, "client_growr_connection")
-    .then((res) => (id = res[0].id))
+    .then((rez) => {
+      const id = rez[0].id;
+      helper
+        .remove(id, "client_growr_connection")
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((err) => res.status(500).json({ status: 500, err }));
+    })
     .catch((err) => console.log(err));
-  await helper
-    .remove(id, "client_growr_connection")
-    .then((rez) => res.status(200).json(rez))
-    .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
 function checkRole(role) {
