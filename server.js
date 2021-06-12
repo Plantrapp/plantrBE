@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: URL,
+    methods: ["GET", "POST", "DELETE", "PUT"],
   })
 );
 app.use(formData.parse());
