@@ -6,9 +6,9 @@ const upload = multer();
 const imageDataUri = require("image-data-uri");
 
 cloudinary.config({
-  cloud_name: "samuel-brown",
-  api_key: "679133214658966",
-  api_secret: "ZwOhfkMlf6bzL8GnA2iSrRYlI_U",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 router.post("/prof_pic", (req, res) => {
