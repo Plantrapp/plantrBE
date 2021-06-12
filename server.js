@@ -23,6 +23,7 @@ app.use(
     allowedHeaders: "Access-Control-Allow-Origin",
     origin: URL,
     methods: ["GET", "POST", "DELETE", "PUT"],
+    preflightContinue: false,
   })
 );
 app.use(formData.parse());
