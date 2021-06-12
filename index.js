@@ -1,6 +1,6 @@
 require("dotenv").config();
-// const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app/`;
-// const URL = `http://localhost:3000`;
+// const URL = `https://deployed-plantr-fe-sambrown0322.vercel.app`;
+const URL = `http://localhost:3000`;
 module.exports = URL;
 const app = require("./server");
 const socket = require("socket.io");
@@ -13,7 +13,7 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "https://deployed-plantr-fe-git-main-plantr.vercel.app",
+    origin: URL,
     methods: ["GET", "POST"],
   },
 });
