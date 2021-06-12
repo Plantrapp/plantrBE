@@ -51,7 +51,7 @@ router.post("/password", async (req, res) => {
       html: `
       <h1>Plantr Reset Password</h1>
       <p>Click the link below to reset your password</p>
-      <a href="${URL}/forgot-password/${hashData.hash}">Reset Password</a>
+      <a href="https://deployed-plantr-fe-git-main-plantr.vercel.app/forgot-password/${hashData.hash}">Reset Password</a>
       `,
     };
 

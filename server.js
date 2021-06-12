@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: URL,
+    origin: "https://deployed-plantr-fe-git-main-plantr.vercel.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
   })
 );
