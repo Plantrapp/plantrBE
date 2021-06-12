@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    "Access-Control-Allow-Origin": URL,
+    allowedHeaders: "Access-Control-Allow-Origin",
     origin: URL,
     methods: ["GET", "POST", "DELETE", "PUT"],
   })
