@@ -22,7 +22,6 @@ app.use(
   cors({
     origin: URL,
     methods: ["GET", "POST", "DELETE", "PUT"],
-    preflightContinue: false,
   })
 );
 app.use(formData.parse());
