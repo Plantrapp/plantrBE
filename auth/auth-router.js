@@ -36,6 +36,8 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
+  console.log(isValid(req.body));
+
   if (isValid(req.body)) {
     helper
       .findBy({ username }, "user")
