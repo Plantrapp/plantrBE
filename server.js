@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: `https://deployed-plantr-fe-git-main-plantr.vercel.app/`,
+    origin: `https://deployed-plantr-fe-git-main-plantr.vercel.app`,
   })
 );
 app.use(formData.parse());
