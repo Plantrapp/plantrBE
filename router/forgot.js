@@ -8,7 +8,6 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 router.get("/password/:hash", (req, res) => {
   const hash = req.params;
-  console.log("here");
   helper
     .findBy(hash, "hashes")
     .then((rez) => res.status(200).json(rez))
@@ -77,9 +76,6 @@ router.post("/password", async (req, res) => {
 
 router.put("/password/", (req, res) => {
   const { id, isHashUsed } = req.body;
-  console.log("ID: ", id);
-  console.log("isHashUsed: ", isHashUsed);
-  console.log("body ", req.body);
   helper
     .update({ isHashUsed }, id, "hashes")
     .then((rez) => res.status(200).json(rez))
