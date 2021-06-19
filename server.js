@@ -14,7 +14,7 @@ const reviewsRouter = require("./router/reviews");
 const portfolioRouter = require("./router/portfolio");
 const forgotRouter = require("./router/forgot");
 const restricted = require("./auth/restricted-middleware");
-const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app/`;
+const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app`;
 // const URL = "*";
 app.use(helmet());
 app.use(express.json());
