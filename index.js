@@ -1,6 +1,6 @@
 require("dotenv").config();
-// const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app`;
-const URL = `http://localhost:3000`;
+const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app`;
+// const URL = `http://localhost:3000`;
 module.exports = URL;
 const app = require("./server");
 const socket = require("socket.io");
