@@ -34,7 +34,9 @@ app.use("/portfolio-posts", portfolioRouter);
 app.use("/forgot", forgotRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).json({ Victor_Frankenstein: "Its ALIVE" });
+  res
+    .status(200)
+    .json({ Victor_Frankenstein: "Its ALIVE", Version: "1.21.6.0" });
 });
 
 module.exports = app;
