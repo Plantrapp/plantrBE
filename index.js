@@ -1,5 +1,9 @@
 require("dotenv").config();
+<<<<<<< HEAD
 const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app/`;
+=======
+const URL = `https://deployed-plantr-fe-git-main-plantr.vercel.app`;
+>>>>>>> cb5d34aff3f2de43dcee55d8601b74f776a01ba0
 // const URL = `http://localhost:3000`;
 module.exports = URL;
 const app = require("./server");

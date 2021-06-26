@@ -92,7 +92,7 @@ router.delete("/:id", restricted, (req, res) => {
         if (err) {
           console.log("error", err);
         } else {
-          console.log(result);
+          console.log("deleted");
         }
       });
       res.status(200).json(rez);

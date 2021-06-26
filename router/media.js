@@ -19,7 +19,6 @@ router.post("/prof_pic", (req, res) => {
 });
 
 router.post("/", upload.single("prof_pic"), (req, res, next) => {
-  console.log(req.file, req.body.description);
   let image = imageDataUri.encode(req.file.buffer, "image");
 
   cloudinary.uploader.upload(
