@@ -8,12 +8,13 @@ const helper = require("../router/helper");
 
 router.post("/register", (req, res) => {
   const credentials = req.body;
+  console.log(req.body);
   credentials.id = uuid();
   if (isValid(credentials)) {
-    const rounds = process.env.BCRYPT_ROUNDS || 8;
+    const rounds = Number(process.env.BCRYPT_ROUNDS) || 8;
 
     const hash = bcryptjs.hashSync(credentials.password, rounds);
-
+    console.log("post hash");
     credentials.password = hash;
 
     helper
