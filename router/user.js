@@ -59,7 +59,7 @@ router.put("/:id", (req, res) => {
     if (bcrypt.compareSync(req.body.previous_password, req.body.oldPassword)) {
       delete req.body.oldPassword;
       delete req.body.previous_password;
-      req.body.password = bcrypt.hashSync(req.body.password, 8); // Change number to an ENV variable 🔦
+      req.body.password = bcrypt.hashSync(req.body.password, 8);
     } else {
       res.status(401).json({ status: 401, msg: "not old password" });
     }
