@@ -43,7 +43,7 @@ router.post("/", restricted, (req, res) => {
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
-router.put("/:id", restricted, (req, res) => {
+router.put("/:id", (req, res) => {
   const id = req.params.id;
 
   if (req.body.key) {

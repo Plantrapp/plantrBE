@@ -9,6 +9,10 @@ const helper = require("../router/helper");
 router.post("/register", (req, res) => {
   const credentials = req.body;
   credentials.id = uuid();
+  console.log({
+    valid: isValid(credentials),
+    creds: credentials,
+  });
   if (isValid(credentials)) {
     const rounds = process.env.BCRYPT_ROUNDS || 8;
 
@@ -24,7 +28,8 @@ router.post("/register", (req, res) => {
         res.status(201).json({ data: user, token });
       })
       .catch((error) => {
-        res.status(500).json({ message: error.message });
+        console.log(error);
+        res.status(500).json({ message: error });
       });
   } else {
     res.status(400).json({
@@ -36,6 +41,8 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
+  console.log(isValid(req.body));
+
   if (isValid(req.body)) {
     helper
       .findBy({ username }, "user")
