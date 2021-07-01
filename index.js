@@ -1,5 +1,5 @@
 require("dotenv").config();
-const URL = `https://www.plantrapp.xyz/`;
+const URL = `https://www.plantrapp.xyz`;
 
 module.exports = URL;
 const app = require("./server");
